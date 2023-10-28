@@ -150,12 +150,48 @@ EOF  all  create  destroy  help  quit  show  update
 (hbnb) quit
 ```
 
-## Bugs
-No known bugs at this time. 
+# Project: AirBnB Clone - RESTful API
+**Project Weight:** 2
+**Project Team:** Mohamed Ezghoudi, El mahdi Mouline
+**Project Start Date:** October 26, 2023 4:00 AM
+**Project Deadline:** October 31, 2023 4:00 AM
+**Checker Released:** October 27, 2023 10:00 AM
+
+## Project Overview
+In this project, we are tasked with creating an AirBnB clone with a RESTful API using Python and Flask. This project will help us understand various concepts such as REST API, resources, and HTTP methods. We will also learn about designing a modular web application using Flask.
+
+## Task 1: Never Fail!
+In the first task, we need to ensure that all existing unit tests pass. This is important to maintain the project's integrity as new features are added. Additionally, we are encouraged to add new tests where necessary.
+
+## Task 2: Improve Storage
+In the second task, we need to enhance the storage module by adding two new methods:
+1. A method to retrieve a specific object based on its class and ID.
+2. A method to count the number of objects in storage, either for a specific class or all objects.
+New tests for these methods should also be created.
+
+## Task 3: Status of your API
+Task 3 involves creating the first endpoint for our API. We need to create an endpoint that returns the status of our API, which should be "OK". We also set up the basic structure for the API.
+
+## Task 4: Some Stats?
+In the fourth task, we create an endpoint that retrieves the number of objects for each class in our data model. This is done by using the new `count()` method in storage.
+
+## Task 5: Not Found
+Task 5 focuses on creating a handler for 404 errors. Instead of returning an HTML page, we need to return a JSON-formatted 404 status code response with the content "error": "Not found".
+
+## Task 6: State
+In Task 6, we create a view for State objects that handles the default RESTFul API actions. This includes retrieving a list of all State objects, retrieving a single State, deleting a State, creating a new State, and updating an existing State.
+
+## Task 7: City
+Task 7 is similar to Task 6 but focuses on City objects. We need to create a view for City objects that handles the default RESTFul API actions. This includes retrieving a list of City objects for a State, retrieving a single City, deleting a City, creating a new City, and updating an existing City.
+
+## Conclusion
+The AirBnB Clone project is well underway. We have successfully completed several tasks related to creating a RESTful API and improving storage functionality. The project is helping us gain a deeper understanding of web development and API design.
 
 ## Authors
 Alexa Orrico - [Github](https://github.com/alexaorrico) / [Twitter](https://twitter.com/alexa_orrico)  
 Jennifer Huang - [Github](https://github.com/jhuang10123) / [Twitter](https://twitter.com/earthtojhuang)
+El mahdi Mouline - [Github](https://github.com/moulineE) / [Twitter](https://twitter.com/MoulineEl)
+Mohamed Ezghoudi - [Github](https://github.com/mohamed-622) / [Twitter]()
 
 Second part of Airbnb: Joann Vuong
 ## License
