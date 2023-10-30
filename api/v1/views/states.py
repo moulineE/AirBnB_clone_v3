@@ -14,7 +14,6 @@ def get_states():
     for state in allstates.values():
         states_list.append(state.to_dict())
     response = jsonify(states_list)
-    response.headers["Content-Type"] = "application/json"
     return response
 
 
@@ -26,7 +25,6 @@ def get_state(state_id):
         abort(404)
     response = jsonify(state.to_dict())
     response.status_code = 200
-    response.headers["Content-Type"] = "application/json"
     return response
 
 
@@ -40,7 +38,6 @@ def delete_state(state_id):
     storage.save()
     response = jsonify({})
     response.status_code = 200
-    response.headers["Content-Type"] = "application/json"
     return response
 
 
@@ -55,7 +52,6 @@ def create_state():
     state.save()
     response = jsonify(state.to_dict())
     response.status_code = 201
-    response.headers["Content-Type"] = "application/json"
     return response
 
 
@@ -73,5 +69,4 @@ def update_state(state_id):
     storage.save()
     response = jsonify(state.to_dict())
     response.status_code = 200
-    response.headers["Content-Type"] = "application/json"
     return response
