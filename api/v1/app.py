@@ -1,9 +1,10 @@
 #!/usr/bin/python3
 """this module is the flask app"""
 from api.v1.views import app_views
-from flask import Flask, Blueprint
+from flask import Flask
 from models import storage
 import os
+from flask import jsonify
 app = Flask(__name__)
 app.register_blueprint(app_views)
 
@@ -12,6 +13,18 @@ app.register_blueprint(app_views)
 def SQLsession_close(exception):
     """remove the current SQLAlchemy Session"""
     storage.close()
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    """404 error handler
+     a handler for 404 errors that
+     returns a JSON-formatted
+     404 status code response
+    """
+    response = jsonify({"error": "Not found"})
+    response.status_code = 404
+    return response
 
 
 if __name__ == "__main__":
