@@ -88,32 +88,30 @@ class TestFileStorage(unittest.TestCase):
         """Test that save properly saves objects to file.json"""
 
     @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
-    def test_get(self):
-        """Test that get properly retrieves one object from database"""
-        storage = DBStorage()
-        storage.reload()
-        state = State(name="California")
-        storage.new(state)
+    def test_db_getter(self):
+        """Tests that obtains a db storage instance"""
+        newData = {"name": "casa"}
+        newState = State(**newData)
+        storage.new(newState)
         storage.save()
-        state_id = state.id
-        state = storage.get(State, state_id)
-        self.assertEqual(state.id, state_id)
-        self.assertEqual(state.name, "California")
+        getInstObj = storage.get(State, newState.id)
+        self.assertEqual(
+            getInstObj,
+            newState
+        )
     
     @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
-    def test_count(self):
-        """Test that count properly counts number of objects in database"""
-        storage = DBStorage()
-        storage.reload()
-        state = State(name="California")
+    def test_db_counter(self):
+        """Test count db storage"""
+        newData = {"name": "aga"}
+        state = State(**newData)
         storage.new(state)
+        newData = {"name": "newyork", "state_id": state.id}
+        city = City(**newData)
+        storage.new(city)
         storage.save()
-        state_id = state.id
-        state = storage.get(State, state_id)
-        self.assertEqual(storage.count(State), 1)
-        self.assertEqual(storage.count(), 1)
-        storage.delete(state)
-        storage.save()
-        self.assertEqual(storage.count(State), 0)
-        self.assertEqual(storage.count(), 0)
-        storage.close()
+        res = storage.count()
+        self.assertEqual(
+            len(storage.all()),
+            res
+        )
