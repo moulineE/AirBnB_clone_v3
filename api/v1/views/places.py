@@ -42,7 +42,7 @@ def delete_place(place_id):
         abort(404)
     storage.delete(place)
     storage.save()
-    response = jsonify({}, status=200)
+    response = jsonify({}), 200
     return response
 
 
@@ -65,7 +65,7 @@ def create_place(city_id):
     place = Place(**request.get_json())
     place.city_id = city_id
     place.save()
-    response = jsonify(place.to_dict(), status=201)
+    response = jsonify(place.to_dict()), 201
     return response
 
 
@@ -81,5 +81,5 @@ def update_place(place_id):
         if key not in ['id', 'user_id', 'city_id', 'created_at', 'updated_at']:
             setattr(place, key, value)
     place.save()
-    response = jsonify(place.to_dict(), status=200)
+    response = jsonify(place.to_dict()), 200
     return response
