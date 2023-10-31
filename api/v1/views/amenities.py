@@ -3,8 +3,6 @@
 from api.v1.views import app_views
 from flask import jsonify, abort, request
 from models import storage
-from models.state import State
-from models.city import Ciity
 from models.amenity import Amenity
 
 
@@ -30,7 +28,7 @@ def get_amenity(amenity_id):
 
 
 @app_views.route('/amenities/<amenity_id>', methods=['DELETE'])
-def delete_city(amenity_id):
+def delete_amenity(amenity_id):
     """delete an amenity by id"""
     amenity = storage.get(Amenity, amenity_id)
     if amenity is None:
