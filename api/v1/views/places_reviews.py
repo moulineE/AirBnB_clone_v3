@@ -41,7 +41,7 @@ def delete_review(review_id):
         abort(404)
     storage.delete(review)
     storage.save()
-    response = jsonify({}, status=200)
+    response = jsonify({}), 200
     return response
 
 
@@ -64,7 +64,7 @@ def create_review(place_id):
     review = Review(**request.get_json())
     review.place_id = place_id
     review.save()
-    response = jsonify(review.to_dict(), status=201)
+    response = jsonify(review.to_dict()), 201
     return response
 
 
@@ -81,5 +81,5 @@ def update_review(review_id):
                        'created_at', 'updated_at']:
             setattr(review, key, value)
     review.save()
-    response = jsonify(review.to_dict(), status=200)
+    response = jsonify(review.to_dict()), 200
     return response
