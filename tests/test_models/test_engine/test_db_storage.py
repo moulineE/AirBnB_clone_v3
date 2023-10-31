@@ -92,9 +92,9 @@ class TestFileStorage(unittest.TestCase):
         """Tests that obtains a db storage instance"""
         newData = {"name": "casa"}
         newState = State(**newData)
-        storage.new(newState)
-        storage.save()
-        getInstObj = storage.get(State, newState.id)
+        models.storage.new(newState)
+        models.storage.save()
+        getInstObj = models.storage.get(State, newState.id)
         self.assertEqual(
             getInstObj,
             newState
@@ -105,13 +105,13 @@ class TestFileStorage(unittest.TestCase):
         """Test count db storage"""
         newData = {"name": "aga"}
         state = State(**newData)
-        storage.new(state)
+        models.storage.new(state)
         newData = {"name": "newyork", "state_id": state.id}
         city = City(**newData)
-        storage.new(city)
-        storage.save()
-        res = storage.count()
+        models.storage.new(city)
+        models.storage.save()
+        res = models.storage.count()
         self.assertEqual(
-            len(storage.all()),
+            len(models.storage.all()),
             res
         )
