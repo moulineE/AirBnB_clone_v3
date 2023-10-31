@@ -35,7 +35,7 @@ def delete_user(user_id):
         abort(404)
     storage.delete(user)
     storage.save()
-    response = jsonify({}, status=200)
+    response = jsonify({}), 200
     return response
 
 
@@ -50,7 +50,7 @@ def create_user():
         abort(400, description="Missing password")
     user = User(**request.get_json())
     user.save()
-    response = jsonify(user.to_dict(), status=201)
+    response = jsonify(user.to_dict()), 201
     return response
 
 
@@ -66,5 +66,5 @@ def update_user(user_id):
         if k not in ['id', 'email', 'created_at', 'updated_at']:
             setattr(user, k, v)
     user.save()
-    response = jsonify(user.to_dict(), status=200)
+    response = jsonify(user.to_dict()), 200
     return response
