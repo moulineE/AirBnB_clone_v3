@@ -7,7 +7,7 @@ from models.amenity import Amenity
 
 
 @app_views.route('/amenities', methods=['GET'])
-def get_amenities_list(state_id):
+def get_amenities_list():
     """get amenities"""
     amenities_list = []
     amenities = storage.all(Amenity)
@@ -24,7 +24,7 @@ def get_amenity(amenity_id):
     amenity = storage.get(Amenity, amenity_id)
     if amenity is None:
         return abort(404)
-    return jsonify(city.to_dict())
+    return jsonify(amenity.to_dict())
 
 
 @app_views.route('/amenities/<amenity_id>', methods=['DELETE'])
